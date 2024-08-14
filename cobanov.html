@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Include highlight.js CSS for syntax highlighting -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <!-- Include the Monokai Sublime theme for highlight.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Include highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- Include the language-specific script for Python -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+
+    <!-- Initialize highlight.js -->
+    <script>
+      hljs.highlightAll();
+    </script>
+
+    <title>About Me - [Your Name]</title>
+    <style>
+      body {
+        font-family: "Lucida Console", monospace;
+        font-size: 11px;
+        color: #111;
+        background-color: white;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 50px;
+        box-sizing: border-box;
+      }
+
+      @media (min-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+
+      .landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      .separator {
+        letter-spacing: -9px;
+      }
+
+      hr {
+        border: none;
+        height: 2px;
+        background-color: lightgrey;
+        width: 100%;
+        margin: 30px auto;
+      }
+
+      .links-container {
+        margin-top: 20px;
+      }
+
+      .links-container a {
+        text-decoration: none;
+        margin: 10px;
+        color: inherit;
+      }
+
+      h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .project-photo {
+        display: block;
+        max-width: 640px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+
+      pre,
+      code {
+        font-family: "Fira Code", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="landing">
+      <h1>Mert Cobanov</h1>
+      <div class="links-container">
+        <a href="#about">About Me</a><span class="separator">|</span>
+        <a href="#projects">Projects</a><span class="separator">|</span>
+        <a href="#contact">Contact</a>
+      </div>
+    </div> -->
+
+    <div class="links-container">
+      <a href="#home">Home</a><span class="separator">|</span>
+      <a href="#blog">Blog</a><span class="separator">|</span>
+      <a href="#projects">Projects</a><span class="separator">|</span>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <hr />
+    <h2 id="about">Mert Cobanov</h2>
+    <p>
+      Hello! I am [Your Name], a data scientist, generative artist, and educator
+      based in Istanbul. I am passionate about digitizing the memories of
+      humanity through artistic works, and I focus on the intersection of
+      technology and art.
+    </p>
+    <p>
+      In addition to my work in data science, I provide free education on
+      Twitter and YouTube, teaching at various schools and communities annually.
+      My journey in AI and machine learning has led me to explore Diffusion
+      Models and sequence prediction tasks using RNNs, among other fascinating
+      areas.
+    </p>
+
+    <hr />
+
+    <h2 id="projects">My Projects</h2>
+    <p>Below are some of the key projects I've been working on:</p>
+
+
+
+    <h3>Next Word Prediction</h3>
+    <b>
+      <a href="https://github.com/cobanov/next-word-predict" target="_blank"
+        >GitHub</a
+      >
+      |
+      <a href="https://github.com/cobanov/next-word-predict" target="_blank"
+        >Demo</a
+      >
+    </b>
+    <p>
+      This FastAPI application offers text prediction capabilities using a
+      pre-trained RoBERTa model. It serves a static HTML page and provides an
+      endpoint for generating text predictions in real-time.
+    </p>
+    <img
+      class="project-photo"
+      src="https://github.com/cobanov/next-word-predict/raw/main/assets/Animation.gif"
+      alt="Next Word Prediction Demo"
+    />
+
+    <hr />
+
+    <h3>Fast + Focused</h3>
+    <b>
+      <a href="https://github.com/cobanov/next-word-predict" target="_blank"
+        >GitHub</a
+      >
+      |
+      <a href="https://github.com/cobanov/next-word-predict" target="_blank"
+        >Demo</a
+      >
+    </b>
+    <p>
+      The Fast + Focused App is a web-based application designed to enhance your
+      reading speed by displaying words from a text file at a rapid pace. This
+      method, often referred to as speed reading, allows users to consume
+      content faster by minimizing the eye movement and focusing on central
+      vision. The app dynamically reads a text file and displays each word
+      individually at a user-defined speed.
+    </p>
+    <img
+      class="project-photo"
+      src="https://github.com/cobanov/fast-focused/raw/main/assets/demo.gif"
+      alt="Next Word Prediction Demo"
+    />
+
+    <hr />
+
+    <h3>Tasnif</h3>
+    <b>
+      <a href="https://github.com/cobanov/tasnif" target="_blank">GitHub</a>
+    </b>
+    <p>
+      Tasnif is a Python package designed for clustering images into
+      user-defined classes based on their visual content. It utilizes deep
+      learning to generate image embeddings, Principal Component Analysis (PCA)
+      for dimensionality reduction, and K-means for clustering. Tasnif supports
+      processing on both GPU and CPU, making it versatile for different
+      computational environments.
+    </p>
+    <pre><code class="language-python">from tasnif import Tasnif
+
+# Initialize Tasnif with 5 classes, PCA dimensions set to 16, and GPU usage
+classifier = Tasnif(num_classes=5, pca_dim=16, use_gpu=False)
+
+# Read images from a specified directory
+classifier.read('path/to/your/images')
+
+# Calculate embeddings, PCA, and perform clustering
+classifier.calculate()
+
+# Export clustered images and grids
+classifier.export('path/to/output')</code></pre>
+
+    <hr />
+
+    <h3>localscan</h3>
+    <b>
+      <a href="https://github.com/cobanov/localscan" target="_blank">GitHub</a>
+    </b>
+    <p>
+      This is a simple network scanner written in Python. It utilizes ARP
+      requests to discover devices on a given network and performs a lightweight
+      scan on each discovered device using Nmap.
+    </p>
+    <img
+      class="project-photo"
+      src="https://github.com/cobanov/localscan/raw/main/assets/demo.png"
+      alt="Localscan Demo"
+    />
+
+    <hr />
+
+    <h2 id="contact">Contact Me</h2>
+    <p>
+      If you'd like to get in touch, feel free to reach out via email at
+      [your-email@example.com]. I'm always open to collaborations, new projects,
+      or just a friendly chat about AI, art, and everything in between.
+    </p>
+  </body>
+</html>
