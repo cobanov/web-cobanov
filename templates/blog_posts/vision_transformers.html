@@ -1,5 +1,202 @@
 {% extends "base.html" %} {% block title %}Post 1 Title - [Your Blog Title]{%
 endblock %} {% block content %}
-<h2>Post 2 Title</h2>
-<p>This is the content of the first blog post.</p>
+<h2 id="t-rk-e-tmux-rehberi">Türkçe tmux rehberi</h2>
+<p>
+  <strong>tmux</strong> bir terminal çoklayıcısıdır ve özellikle uzun süren veya
+  çoklu terminal oturumlarını yönetirken kullanırız. Bu araç, kullanıcıların
+  birden fazla terminal oturumunu tek bir arayüzde yönetmelerine olanak tanır.
+</p>
+<p>
+  Özellikle birden çok göreve aynı anda odaklanmanız gerektiğinde, iş akışınızı
+  büyük ölçüde kolaylaştırmaya yarar.
+</p>
+<p>
+  Önemli bir özelliği, tmux oturumlarının bağlantı kesilse bile korunmasıdır.
+  Yani, bir sunucuyla uzaktan çalışırken bağlantınız kesilirse, tmux oturumunuz
+  arka planda çalışmaya devam eder ve bağlantıyı yeniden kurduğunuzda kaldığınız
+  yerden devam edebilirsiniz. Bu, özellikle kararsız internet bağlantıları olan
+  veya uzun süreli komutlar çalıştırdığımızda oldukça işe yarıyor.
+</p>
+<p>
+  <img
+    src="https://cdn-images-1.medium.com/max/4000/0*YM1kUsmkKiF1zvPb.png"
+    alt="tmux ekranı"
+    class="responsive"
+  />
+</p>
+<h2 id="tmux-a-neden-ihtiyac-m-olur-">tmux’a neden ihtiyacım olur?</h2>
+<p>
+  tmux, özellikle uzak oturumları yönetirken veya bir terminal ortamında birden
+  fazla görevde gitgel yaparken, komut satırı işleriniz için güçlü, esnek ve
+  dayanıklı bir kontrol merkezi gibi çalışır.
+</p>
+<ul>
+  <li>
+    <p>
+      <strong>Çoklu Pencereler:</strong> tmux, tek bir terminal penceresi içinde
+      birden çok pencere açmanıza olanak tanır. Bu, lokal makinenizde olduğu
+      gibi birden fazla terminal sekmesi açamayacağınız bir uzak sunucuda
+      çalışırken özellikle faydalıdır.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Sessions and Detaching:</strong> Bir tmux oturumundan ayrılabilir
+      ve onu arka planda çalışır durumda bırakabilirsiniz. Bu, bir tmux oturumu
+      içinde uzun süreli bir işlem başlatabilir, ondan ayrılabilir ve sonra,
+      farklı bir bilgisayardan bile, daha sonra yeniden bağlanabilirsiniz. Bu,
+      uzun süren görevler için uzak sunucularda kapanmayan bir oturum gibi
+      değerlidir.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Persistent Sessions:</strong> Bir sunucudan bağlantınız kesilirse
+      (SSH bağlantısını kaybetmek gibi), tmux oturumunuzu aktif tutar. Tekrardan
+      bağlanabilir ve hiçbir şey kaybetmeden kaldığınız yerden devam
+      edebilirsiniz.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Split Panes:</strong> tmux, terminal pencerenizi yatay ve dikey
+      olarak birden fazla panele bölmektedir. Bu, birkaç komutun çıktısını aynı
+      anda görebilmeniz, izleme, düzenleme veya birden fazla komut satırı
+      uygulamasını yan yana çalıştırmanız için harikadır.
+    </p>
+  </li>
+</ul>
+<h2 id="tmux-kurulumu">tmux kurulumu</h2>
+<p>
+  <em
+    >Source:
+    <a href="https://github.com/tmux/tmux/wiki/Installing"
+      >https://github.com/tmux/tmux/wiki/Installing</a
+    ></em
+  >
+</p>
+<pre><code>╔════════════════════════╦═════════════════════╗
+║        Platform        ║   <span class="hljs-keyword">Install</span> Command   ║
+╠════════════════════════╬═════════════════════╣
+║ Arch Linux             ║ pacman -S tmux      ║
+║ Debian <span class="hljs-keyword">or</span> Ubuntu       ║ apt <span class="hljs-keyword">install</span> tmux    ║
+║ Fedora                 ║ dnf <span class="hljs-keyword">install</span> tmux    ║
+║ RHEL <span class="hljs-keyword">or</span> CentOS         ║ yum <span class="hljs-keyword">install</span> tmux    ║
+║ macOS (<span class="hljs-keyword">using</span> Homebrew) ║ brew <span class="hljs-keyword">install</span> tmux   ║
+║ macOS (<span class="hljs-keyword">using</span> MacPorts) ║ port <span class="hljs-keyword">install</span> tmux   ║
+║ openSUSE               ║ zypper <span class="hljs-keyword">install</span> tmux ║
+╚════════════════════════╩═════════════════════╝
+</code></pre>
+<h2 id="tmux-a-ba-larken">tmux’a başlarken</h2>
+<p>
+  tmux kullanmaya başlamak için terminalinizde tmux yazın. Bu komut, bir tmux
+  sunucusu başlatır ve varsayılan bir oturum oluşturur (number 0)
+</p>
+<pre><code><span class="hljs-attribute">tmux</span>
+</code></pre>
+<p>
+  <img
+    src="https://cdn-images-1.medium.com/max/3176/0*nPkiznvGZTispU-K.png"
+    alt=""
+  />
+</p>
+<p>
+  Bir tmux oturumundan ayrılmak için ctrl+b ardından d (detach) tuşlarına basın.
+  Tmux, “prefix” kombinasyonuna basılarak tetiklenen bir dizi tuş keybindingleri
+  (klavye kısayolları) kullanır. Varsayılan olarak, prefix Ctrl+B dir. Daha
+  sonra, mevcut oturumdan ayrılmak için D (detach) tuşuna basın.
+</p>
+<pre><code>~ <span class="hljs-selector-tag">tmux</span> <span class="hljs-selector-tag">ls</span> # 0: 1 <span class="hljs-selector-tag">windows</span> (<span class="hljs-selector-tag">created</span> <span class="hljs-selector-tag">Thu</span> <span class="hljs-selector-tag">Nov</span> 30 20<span class="hljs-selector-pseudo">:16</span><span class="hljs-selector-pseudo">:45</span> 2023)
+</code></pre>
+<p>
+  <img
+    src="https://cdn-images-1.medium.com/max/3176/0*jNjXSqK4_R2JJ7uR.png"
+    alt=""
+  />
+</p>
+<p>
+  Aşağıdaki komut ile birlikte hali hazırda açmış olduğunuz bir session’ı
+  yeniden adlandırabilirsiniz.
+</p>
+<pre><code># tmux <span class="hljs-built_in">rename</span> -t <span class="hljs-symbol">&lt;target_session&gt;</span> <span class="hljs-symbol">&lt;new_name&gt;</span> 
+~ tmux <span class="hljs-built_in">rename</span> -t <span class="hljs-number">0</span> cobanov
+</code></pre>
+<p>
+  Bu noktada SSH bağlantınızı kesebilirsiniz yine de komut çalışmaya devam
+  edecektir. İstediğinize mevcut tmux oturumuna yeniden bağlanarak kaldığınız
+  yerden devam edebilirsiniz:
+</p>
+<pre><code><span class="hljs-meta"># tmux a -t <span class="hljs-meta-string">&lt;session_name&gt;</span></span>
+~ tmux <span class="hljs-built_in">attach</span> -t cobanov
+</code></pre>
+<p>AYCS, her sey oldugu yerinde devam ediyor.</p>
+<h2 id="ekranlar-n-y-netimi">Ekranların Yönetimi</h2>
+<p>
+  Bir masaüstü ortamında nasıl pencereleriniz varsa Tmux’ta panelleriniz vardır.
+  Aynı pencereler gibi, bu paneller de birden fazla uygulamayla etkileşimde
+  bulunmanızı sağlar ve benzer şekilde açılabilir, kapatılabilir, yeniden
+  boyutlandırılabilir ve taşınabilir.
+</p>
+<p>
+  Standart bir masaüstün ortamından farklı olarak, bu paneller tüm terminale
+  döşenmiştir ve çoğunlukla tmux kısayolları ile yönetilir.
+  <em>(fare işlevselliği eklenebilir olsa da).</em> Yeni bir panel oluşturmak
+  için ekranı yatay veya dikey olarak bölersiniz.
+</p>
+<h2 id="dikey-ekran-b-lme">Dikey Ekran Bölme</h2>
+<pre><code><span class="hljs-symbol">ctrl</span>+<span class="hljs-keyword">b </span>%
+</code></pre>
+<p>
+  <img
+    src="https://cdn-images-1.medium.com/max/3176/0*bq_d58tUTA54L-1v.png"
+    alt=""
+  />
+</p>
+<h2 id="yatay-ekran-b-lme">Yatay Ekran Bölme</h2>
+<pre><code>ctrl+<span class="hljs-selector-tag">b</span> <span class="hljs-string">"</span>
+</code></pre>
+<p>
+  <img
+    src="https://cdn-images-1.medium.com/max/3176/0*0vmRK4OB6FIUNT2M.png"
+    alt=""
+  />
+</p>
+<h2 id="ekranlar-aras-ge-i-">Ekranlar arası geçiş</h2>
+<pre><code>ctrl+<span class="hljs-selector-tag">b</span> [arrow key]
+</code></pre>
+<p>
+  tmux’ta tüm kısayol tuşlarını görmek için basitçe bind-key ? komutunu
+  kullanın, benim durumumda bu CTRL-B ? olacaktır.
+</p>
+<h2 id="further-reading-sources">Further Reading &amp; Sources</h2>
+<ol>
+  <li>
+    <p>
+      <a href="https://github.com/tmux/tmux">https://github.com/tmux/tmux</a>
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="https://gist.github.com/MohamedAlaa/2961058"
+        >https://gist.github.com/MohamedAlaa/2961058</a
+      >
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="https://leanpub.com/the-tao-of-tmux/read"
+        >https://leanpub.com/the-tao-of-tmux/read</a
+      >
+    </p>
+  </li>
+  <li>
+    <p>
+      <a
+        href="https://medium.com/pragmatic-programmers/a-beginners-guide-to-tmux-7e6daa5c0154"
+        >https://medium.com/pragmatic-programmers/a-beginners-guide-to-tmux-7e6daa5c0154</a
+      >
+    </p>
+  </li>
+</ol>
+
 {% endblock %}
