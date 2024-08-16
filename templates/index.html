@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% block title %}Home - [Your Blog Title]{% endblock
-%} {% block content %}
+{% extends "base.html" %} {% block title %}Home - Mert Cobanov{% endblock %} {%
+block content %}
 <!-- Introduction Section -->
 <div class="introduction">
   <h2>Mert Cobanov</h2>
@@ -16,7 +16,7 @@
   <ul>
     <li>🌍 Based in Istanbul</li>
     <li>
-      ✉️ Reach me at
+      💌 Reach me at
       <a href="mailto:mertcobanov@gmail.com">mertcobanov@gmail.com</a>
     </li>
     <li>
@@ -35,103 +35,21 @@
   {% endfor %}
 </ul>
 
-<!-- Highlighted Projects Section -->
+<!-- Highlighted Projects Section
 <h2>Highlighted Projects</h2>
 <p>
   In addition to my work in data science, I provide free education on Twitter
   and YouTube, teaching at various schools and communities annually. My journey
   in AI and machine learning has led me to explore Diffusion Models and sequence
   prediction tasks using RNNs, among other fascinating areas.
-</p>
+</p> -->
 
-<h3>Next Word Prediction</h3>
-<b>
-  <a href="https://github.com/cobanov/next-word-predict" target="_blank"
-    >GitHub</a
-  >
-  |
-  <a href="https://github.com/cobanov/next-word-predict" target="_blank"
-    >Demo</a
-  >
-</b>
+<h2 id="contact">Contact Me</h2>
 <p>
-  This FastAPI application offers text prediction capabilities using a
-  pre-trained RoBERTa model. It serves a static HTML page and provides an
-  endpoint for generating text predictions in real-time.
+  If you'd like to get in touch, feel free to reach out via email at
+  <a href="mailto:mertcobanov@gmail.com">mertcobanov@gmail.com</a>. I'm always
+  open to collaborations, new projects, or just a friendly chat about AI, art,
+  and everything in between.
 </p>
-<img
-  class="project-photo"
-  src="https://github.com/cobanov/next-word-predict/raw/main/assets/Animation.gif"
-  alt="Next Word Prediction Demo"
-/>
 
-<hr />
-
-<h3>Fast + Focused</h3>
-<b>
-  <a href="https://github.com/cobanov/next-word-predict" target="_blank"
-    >GitHub</a
-  >
-  |
-  <a href="https://github.com/cobanov/next-word-predict" target="_blank"
-    >Demo</a
-  >
-</b>
-<p>
-  The Fast + Focused App is a web-based application designed to enhance your
-  reading speed by displaying words from a text file at a rapid pace. This
-  method, often referred to as speed reading, allows users to consume content
-  faster by minimizing the eye movement and focusing on central vision. The app
-  dynamically reads a text file and displays each word individually at a
-  user-defined speed.
-</p>
-<img
-  class="project-photo"
-  src="https://github.com/cobanov/fast-focused/raw/main/assets/demo.gif"
-  alt="Fast + Focused Demo"
-/>
-
-<hr />
-
-<h3>Tasnif</h3>
-<b>
-  <a href="https://github.com/cobanov/tasnif" target="_blank">GitHub</a>
-</b>
-<p>
-  Tasnif is a Python package designed for clustering images into user-defined
-  classes based on their visual content. It utilizes deep learning to generate
-  image embeddings, Principal Component Analysis (PCA) for dimensionality
-  reduction, and K-means for clustering. Tasnif supports processing on both GPU
-  and CPU, making it versatile for different computational environments.
-</p>
-<pre><code class="language-python">from tasnif import Tasnif
-
-# Initialize Tasnif with 5 classes, PCA dimensions set to 16, and GPU usage
-classifier = Tasnif(num_classes=5, pca_dim=16, use_gpu=False)
-
-# Read images from a specified directory
-classifier.read('path/to/your/images')
-
-# Calculate embeddings, PCA, and perform clustering
-classifier.calculate()
-
-# Export clustered images and grids
-classifier.export('path/to/output')</code></pre>
-
-<hr />
-
-<h3>Localscan</h3>
-<b>
-  <a href="https://github.com/cobanov/localscan" target="_blank">GitHub</a>
-</b>
-<p>
-  This is a simple network scanner written in Python. It utilizes ARP requests
-  to discover devices on a given network and performs a lightweight scan on each
-  discovered device using Nmap.
-</p>
-<img
-  class="project-photo"
-  src="https://github.com/cobanov/localscan/raw/main/assets/demo.png"
-  alt="Localscan Demo"
-/>
 {% endblock %}

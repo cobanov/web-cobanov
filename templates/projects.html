@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Projects - [Your Name]{% endblock %}
+{% extends "base.html" %} {% block title %}Projects - Mert Cobanov{% endblock %}
 {% block content %}
 <h2 id="projects">My Projects</h2>
 <p>Below are some of the key projects I've been working on:</p>
@@ -93,4 +93,159 @@ classifier.export('path/to/output')</code></pre>
   src="https://github.com/cobanov/localscan/raw/main/assets/demo.png"
   alt="Localscan Demo"
 />
+<hr />
+
+<h3>Easy Web Summarizer</h3>
+<b>
+  <a href="https://github.com/cobanov/easy-web-summarizer" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  A Python script designed to summarize webpages from specified URLs using the
+  LangChain framework and the ChatOllama model. It leverages advanced language
+  models to generate detailed summaries, making it an invaluable tool for
+  quickly understanding the content of web-based documents.
+</p>
+<pre><code class="language-python">python summarizer.py -u "http://example.com/document"</code></pre>
+<pre><code class="language-bash">docker build -t web_summarizer .
+docker run -p 7860:7860 web_summarizer
+  
+# Run if you run ollama on host
+docker run -d --network='host' -p 7860:7860 web_summarizer</code></pre>
+
+<hr />
+
+<h3>Image Clustering</h3>
+<b>
+  <a href="https://github.com/cobanov/image-clustering" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>Easy image clustering tool.</p>
+
+<pre><code class="language-python">usage: main.py [-h] [-i INPUT] [-c CLUSTER] [-p PCA]
+
+Image caption CLI
+
+optional arguments:
+  -h, --help                        show this help message and exit
+  -i INPUT, --input INPUT           Input directory path, such as ./images
+  -c CLUSTER, --cluster CLUSTER     How many cluster will be
+  -p PCA, --pca PCA                 PCA Dimensions
+  --cpu                             Run on CPU
+</code></pre>
+<hr />
+
+<h3>Contact Sheet Generator</h3>
+<b>
+  <a href="https://github.com/cobanov/contact-sheet" target="_blank">GitHub</a>
+</b>
+<p>
+  Contact Sheet Generator is a Python script that generates a contact sheet from
+  a directory of images. It uses the PIL library to process images and
+  multiprocessing to generate thumbnails in parallel. The contact sheet is
+  created by arranging the thumbnails in a grid pattern.
+</p>
+<pre><code class="language-python">python contract_sheet.py /path/to/images --shuffle --heic_to jpeg --img-size 500 --no-crop result.jpg
+</code></pre>
+
+<hr />
+
+<h3>Audio Embedding</h3>
+<b>
+  <a href="https://github.com/cobanov/audio-embedding" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>A simple Python script for extracting audio embeddings.</p>
+
+<hr />
+
+<h3>Image Similarity Calculator</h3>
+<b>
+  <a href="https://github.com/cobanov/clip-image-similarity" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  This project provides a simple image similarity calculator using the CLIP
+  (Contrastive Language-Image Pre-training) model. It consists of two Python
+  scripts, predictor.py and app.py, that allow you to calculate the cosine
+  similarity between two images.
+</p>
+
+<hr />
+
+<h3>Audio Genre Detection</h3>
+<b>
+  <a href="https://github.com/cobanov/audio-genre-detection" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  The Audio Genre Detection project is a robust and sophisticated system for
+  determining the genre of audio files. Leveraging the power of Essentia, a
+  comprehensive library for audio analysis, and TensorFlow, this system provides
+  accurate and efficient genre classification. It includes a Dockerized
+  environment that streamlines the process of running the audio genre detection
+  system, making it accessible and hassle-free.
+</p>
+
+<hr />
+
+<h3>Image Captioning</h3>
+<b>
+  <a href="https://github.com/cobanov/image-captioning" target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  Captioning is an img2txt model that uses the BLIP. Exports captions of images.
+</p>
+
+<hr />
+
+<h3>Unlabeled Image Autoencoder</h3>
+<b>
+  <a
+    href="https://github.com/cobanov/unlabeled-image-autoencoder"
+    target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  This project focuses on building and utilizing an autoencoder for clustering
+  unlabeled image datasets. The autoencoder is designed to compress images into
+  a lower-dimensional representation and then reconstruct them from this
+  compressed form. The project includes training the autoencoder, extracting
+  features from any image test dataset, and visualizing the embeddings using
+  t-SNE to further reduce dimensionality for visualization.
+</p>
+
+<hr />
+
+<h3>KSampler Advanced Tile</h3>
+<b>
+  <a
+    href="https://github.com/cobanov/unlabeled-image-autoencoder"
+    target="_blank"
+    >GitHub</a
+  >
+</b>
+<p>
+  This node introduces enhancements to the KSamplerAdvanced node by adding
+  tiling functionality. The key changes are encapsulated in two new classes:
+  KSamplerAdvancedTile and CircularVAEDecode. KSamplerAdvancedTile: This class
+  brings in the capability to handle tiling along the X and Y axes
+  independently. It includes methods for setting layer padding based on tiling
+  parameters, applying asymmetric tiling to all convolutional layers, hijacking
+  and restoring Conv2d methods for customized forward passes, and a tailored
+  sampling method that accounts for tiling preferences, noise addition, and
+  denoise levels. CircularVAEDecode: A class that extends VAEDecode, introducing
+  circular padding for Conv2d layers during the decoding process.
+</p>
+
+<hr />
+
 {% endblock %}
