@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %}Helpers - Mert Cobanov{% endblock %} {%
+block content %}
+<h2>Helpers</h2>
+<ul>
+  {% for post_name, post_title in posts.items() %}
+  <li><a href="/helpers/{{ post_name }}">{{ post_title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

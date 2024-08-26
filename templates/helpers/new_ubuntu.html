@@ -1,0 +1,121 @@
+{% extends "base.html" %} {% block title %}Post 1 Title - [Your Blog Title]{%
+endblock %} {% block content %}
+
+<h2 id="install-ubuntu">Install Ubuntu</h2>
+<h3 id="disk-partition">Disk Partition</h3>
+<ul>
+  <li>EFI: 500mb</li>
+  <li>SWAP: 8192mb</li>
+  <li>EXT4 Boot: 100mb</li>
+  <li>EXT: all remain</li>
+</ul>
+<h3 id="after-installation">After Installation</h3>
+<p>Update ubuntu</p>
+<pre><code class="lang-bash">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span> &amp;&amp; sudo apt-<span class="hljs-built_in">get</span> upgrade
+</code></pre>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> curl vim tree wget git htop tmux
+sudo apt <span class="hljs-keyword">install</span> imagemagick ffmpeg
+</code></pre>
+<h3 id="configure-git">Configure Git</h3>
+<pre><code class="lang-bash">git config --global user<span class="hljs-selector-class">.name</span> <span class="hljs-string">"Mert Cobanov"</span>
+git config --global user<span class="hljs-selector-class">.email</span> <span class="hljs-string">"&lt;mertcobanov@gmail.com&gt;"</span>
+git config --global init<span class="hljs-selector-class">.defaultBranch</span> <span class="hljs-string">'main'</span>
+git config --global credential<span class="hljs-selector-class">.helper</span> store
+</code></pre>
+<h2 id="install-zsh">Install Zsh</h2>
+<p>
+  Read this
+  <a href="https://gist.github.com/n1snt/454b879b8f0b7995740ae04c5fb5b7df"
+    >https://gist.github.com/n1snt/454b879b8f0b7995740ae04c5fb5b7df</a
+  >
+</p>
+<h3 id="make-default">Make default</h3>
+<pre><code class="lang-bash">sudo nano ~/<span class="hljs-selector-class">.bashrc</span>
+exec zsh
+</code></pre>
+<h2 id="docker">Docker</h2>
+<pre><code class="lang-bash">sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key<span class="hljs-built_in"> add </span>-
+sudo<span class="hljs-built_in"> add-apt-repository </span><span class="hljs-string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</span>
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+sudo<span class="hljs-keyword"> system</span>ctl status docker 
+sudo su
+useradd -m -s /bin/bash docker -g docker
+su docker
+docker run hello-world
+</code></pre>
+<h2 id="portainer">Portainer</h2>
+<pre><code class="lang-bash">docker volume create portainer_data
+docker run -d -<span class="hljs-selector-tag">p</span> <span class="hljs-number">8000</span>:<span class="hljs-number">8000</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">9443</span>:<span class="hljs-number">9443</span> --name portainer --restart=always -v /var/run/docker<span class="hljs-selector-class">.sock</span>:/var/run/docker<span class="hljs-selector-class">.sock</span> -v portainer_data:/data portainer/portainer-ce:latest
+</code></pre>
+<h2 id="create-user">Create User</h2>
+<pre><code>sudo adduser fethi
+sudo usermod -aG sudo fethi
+
+sudo <span class="hljs-keyword">chown</span> fethi:fethi /developer
+sudo <span class="hljs-keyword">chmod</span> u+rw /developer
+</code></pre>
+<h2 id="gpu-drivers">GPU Drivers</h2>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">update</span> &amp; <span class="hljs-keyword">upgrade</span>
+sudo apt <span class="hljs-keyword">install</span> nvidia-driver<span class="hljs-number">-525</span> # <span class="hljs-keyword">Check</span> the latest
+nvidia-smi
+</code></pre>
+<pre><code class="lang-bash">lspci | grep -i nvidia
+sudo apt <span class="hljs-keyword">install</span> <span class="hljs-keyword">build</span>-essential
+gcc <span class="hljs-comment">--version</span>
+g++ <span class="hljs-comment">--version</span>
+sudo apt <span class="hljs-keyword">install</span> nvidia-cuda-toolkit
+nvcc <span class="hljs-comment">--version</span>
+</code></pre>
+<h2 id="install-miniconda">Install Miniconda</h2>
+<pre><code class="lang-bash">curl -O http<span class="hljs-variable">s:</span>//repo.anaconda.<span class="hljs-keyword">com</span>/miniconda/Miniconda3-latest-Linux-x86_64.<span class="hljs-keyword">sh</span>
+bash Miniconda3-latest-Linux-x86_64.<span class="hljs-keyword">sh</span>
+</code></pre>
+<h3 id="torch-environment">Torch environment</h3>
+<pre><code class="lang-bash">conda <span class="hljs-keyword">create</span> <span class="hljs-comment">--name torchenv python=3.9</span>
+<span class="hljs-keyword">activate</span> torchenv
+
+conda <span class="hljs-keyword">install</span> pytorch torchvision torchaudio pytorch-cuda=<span class="hljs-number">11.8</span> -c pytorch -c nvidia
+</code></pre>
+<pre><code class="lang-python">import torch
+torch<span class="hljs-selector-class">.cuda</span><span class="hljs-selector-class">.is_available</span>()
+</code></pre>
+<h2 id="docker-with-nvidia-container-runtime">
+  Docker with NVIDIA Container Runtime
+</h2>
+<pre><code class="lang-bash">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>
+</code></pre>
+<pre><code class="lang-bash">sudo apt-get install -y <span class="hljs-string">\</span>
+    apt-transport-https <span class="hljs-string">\</span>
+    ca-certificates <span class="hljs-string">\</span>
+    curl <span class="hljs-string">\</span>
+    gnupg-agent <span class="hljs-string">\</span>
+    software-properties-common
+</code></pre>
+<pre><code class="lang-bash">curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/u</span>buntu<span class="hljs-regexp">/gpg | sudo gpg --dearmor -o /u</span>sr<span class="hljs-regexp">/share/</span>keyrings<span class="hljs-regexp">/docker-archive-keyring.gpg</span>
+</code></pre>
+<pre><code class="lang-bash">echo <span class="hljs-string">"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</span> | sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>docker.list &gt; <span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span>
+</code></pre>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">update</span>
+apt-<span class="hljs-keyword">cache</span> <span class="hljs-keyword">policy</span> docker-ce
+</code></pre>
+<pre><code class="lang-bash">sudo apt install docker-ce
+sudo systemctl status docker
+
+sudo docker <span class="hljs-keyword">run</span><span class="bash"> hello-world</span>
+</code></pre>
+<h2 id="nvidia-container-runtime">NVIDIA Container Runtime</h2>
+<pre><code class="lang-bash">curl -s -L <span class="hljs-string">https:</span><span class="hljs-comment">//nvidia.github.io/nvidia-container-runtime/gpgkey | \</span>
+  sudo apt-key add -
+distribution=$(. <span class="hljs-regexp">/etc/</span>os-release;echo $ID$VERSION_ID)
+curl -s -L <span class="hljs-string">https:</span><span class="hljs-comment">//nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \</span>
+  sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>nvidia-container-runtime.list
+sudo apt-get update
+</code></pre>
+<pre><code class="lang-bash">sudo apt-get <span class="hljs-keyword">install</span> nvidia-<span class="hljs-keyword">container</span>-runtime
+</code></pre>
+<pre><code class="lang-bash">docker run --gpus all nvidia/cuda:<span class="hljs-number">12.1</span><span class="hljs-meta">.0</span>-base-ubuntu22<span class="hljs-meta">.04</span> nvidia-<span class="hljs-keyword">smi</span>
+</code></pre>
+
+{% endblock %}

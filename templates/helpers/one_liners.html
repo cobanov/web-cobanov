@@ -1,0 +1,118 @@
+{% extends "base.html" %} {% block title %}Helpers - Mert Cobanov{% endblock %}
+{% block content %}
+
+<h1 id="one-liners">One Liners</h1>
+<h1 id="python">Python</h1>
+<h2 id="poetry">Poetry</h2>
+<p>
+  Here are some helpful one liners for using Poetry, a dependency manager for
+  Python:
+</p>
+<ul>
+  <li><code>poetry new &lt;project-name&gt;</code>: Create a new project.</li>
+  <li>
+    <code>poetry add &lt;library&gt;</code>: Add a new library to the project.
+  </li>
+  <li>
+    <code>poetry remove &lt;library&gt;</code>: Remove a library from the
+    project.
+  </li>
+  <li>
+    <code>poetry update &lt;library&gt;</code>: Update a library to the latest
+    version.
+  </li>
+  <li>
+    <code>poetry run which python</code>: Get the path to the virtual
+    environment&#39;s Python interpreter.
+  </li>
+  <li><code>poetry env list</code>: Show a list of all environments.</li>
+  <li>
+    <code>poetry export --output requirements.txt</code>: Export dependencies to
+    a requirements.txt file.
+  </li>
+</ul>
+<hr />
+<h2 id="remote-connection">Remote Connection</h2>
+<h3 id="ssh">SSH</h3>
+<pre><code><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-J</span> <span class="hljs-selector-tag">mert</span>@{<span class="hljs-selector-tag">servername</span>}<span class="hljs-selector-class">.ddns</span><span class="hljs-selector-class">.net</span><span class="hljs-selector-pseudo">:port</span> <span class="hljs-selector-tag">mert</span>@<span class="hljs-keyword">target</span>
+</code></pre>
+<h3 id="scp">SCP</h3>
+<p><strong>From Local</strong></p>
+<pre><code>scp -o <span class="hljs-string">"ProxyJump mert@servername.ddns.net -p {port}"</span> test.txt mert<span class="hljs-meta">@target</span>-<span class="hljs-string">pc:</span><span class="hljs-regexp">/home/</span>mert/
+</code></pre>
+<p><strong>Download File From Remote Server</strong></p>
+<pre><code><span class="hljs-attribute">scp</span> -o <span class="hljs-string">"ProxyJump mert<span class="hljs-variable">@servername</span>.ddns.net -p {port}"</span> mert<span class="hljs-variable">@target</span>-pc:/home/mert/ test.txt
+</code></pre>
+<hr />
+<h2 id="various">Various</h2>
+<h3 id="download-file">Download File</h3>
+<pre><code>wget --<span class="hljs-keyword">user</span>-agent Mozilla/<span class="hljs-number">4.0</span> <span class="hljs-string">'big address'</span> -O dest_file_name
+</code></pre>
+<h3 id="rename-files">Rename Files</h3>
+<pre><code>ls -v | cat -n | <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> n f; <span class="hljs-keyword">do</span> mv -n <span class="hljs-string">"<span class="hljs-variable">$f</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$n</span>.ext"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<h3 id="extract-files">Extract Files</h3>
+<pre><code><span class="hljs-number">7</span>za x test<span class="hljs-number">.7</span>z
+</code></pre>
+<h2 id="string-slicing">String Slicing</h2>
+<p><strong>From Character</strong></p>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> raw_daily/*.csv; <span class="hljs-keyword">do</span> <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$f</span> /dimensions_<span class="hljs-string">"<span class="hljs-variable">${f#*blocks_}</span>"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>To Character</strong></p>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> raw_daily/*.csv; <span class="hljs-keyword">do</span> <span class="hljs-built_in">echo</span>  <span class="hljs-variable">$f</span> /dimensions_<span class="hljs-string">"<span class="hljs-variable">${f%*blocks_}</span>"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Random File Name</strong></p>
+<pre><code><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> *.jpg; <span class="hljs-keyword">do</span> mv -i <span class="hljs-string">"<span class="hljs-variable">$i</span>"</span> <span class="hljs-variable">${RANDOM}</span><span class="hljs-variable">${RANDOM}</span>.jpg; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Move Files</strong></p>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> png-exports/*; <span class="hljs-keyword">do</span> cp <span class="hljs-variable">$f</span>/*.png all_images; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>Delete Files Recursively</strong></p>
+<pre><code><span class="hljs-built_in">find</span> e -maxdepth <span class="hljs-number">10</span> -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">name</span> <span class="hljs-string">".*"</span> -delete
+</code></pre>
+<p><strong>Get Dimensions from Folder</strong></p>
+<pre><code>ls -U | <span class="hljs-keyword">while</span> <span class="hljs-keyword">read</span> n; <span class="hljs-keyword">do</span> identify -<span class="hljs-keyword">format</span> <span class="hljs-string">"%f,%w,%h\n"</span> <span class="hljs-string">"$n"</span>; done &gt; file_size.csv
+</code></pre>
+<hr />
+<h2 id="ffmpeg">FFMPEG</h2>
+<p><strong>MP3 → WAV</strong></p>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.mp3; <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">"<span class="hljs-variable">$f</span>"</span> -acodec pcm_s16le -ac 1 -ar 16000 <span class="hljs-string">"wav-exports/<span class="hljs-variable">${f%.}</span>.wav"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>FLAC→ WAV</strong></p>
+<pre><code class="lang-mp4"><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.flac; <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">"<span class="hljs-variable">$f</span>"</span> <span class="hljs-string">"wav-exports/<span class="hljs-variable">${f%.}</span>.wav"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>WAV → mp3</strong></p>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.*; <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">"<span class="hljs-variable">$f</span>"</span> <span class="hljs-string">"wav-exports/<span class="hljs-variable">${f%.}</span>.wav"</span>; <span class="hljs-keyword">done</span>
+</code></pre>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *; <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">"<span class="hljs-variable">${f}</span>"</span> -vn -ab 128k -ar 44100 -y <span class="hljs-string">"<span class="hljs-variable">${f}</span>.mp3"</span> ; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>PNG Sequence → MP4</strong></p>
+<pre><code>ffmpeg -f image2 -r <span class="hljs-number">30</span> -i image_%<span class="hljs-number">6</span>d.png -vcodec libx264 -crf <span class="hljs-number">18</span>  -pix_fmt yuv420p output.mp4
+</code></pre>
+<p><strong>MP4 → PNG</strong></p>
+<pre><code>ffmpeg -i test.mp4 -vf fps=<span class="hljs-number">1</span>/<span class="hljs-number">2</span>  png-exports/video13_%<span class="hljs-number">06</span>d.png
+</code></pre>
+<pre><code><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.mp4; <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">"<span class="hljs-variable">$f</span>"</span> -vf fps=2 png-exports/<span class="hljs-variable">${f%.*}</span>_%06d.png; <span class="hljs-keyword">done</span>
+</code></pre>
+<p><strong>MOV to Optimized GIF</strong></p>
+<pre><code>ffmpeg -i test.mov -vf <span class="hljs-built_in">scale</span>=<span class="hljs-number">320</span>:<span class="hljs-number">-1</span> -r <span class="hljs-number">10</span> <span class="hljs-keyword">output</span>/ffout%<span class="hljs-number">3</span>d.png
+</code></pre>
+<pre><code>convert -<span class="hljs-keyword">delay</span> <span class="hljs-number">8</span> -<span class="hljs-keyword">loop</span> <span class="hljs-number">0</span> output/ffout*.png output/test.gif
+</code></pre>
+<hr />
+<h2 id="image">Image</h2>
+<p>Convert all images in directory</p>
+<pre><code>mogrify -format png <span class="hljs-strong">*.*</span>
+</code></pre>
+<p><strong>ESRGAN</strong></p>
+<pre><code>python inference_realesrgan<span class="hljs-selector-class">.py</span> -n RealESRGAN_x4plus -<span class="hljs-selector-tag">i</span> v13 -s <span class="hljs-number">3</span> --suffix <span class="hljs-number">8</span>k -t <span class="hljs-number">1500</span> -o v13_out
+</code></pre>
+<hr />
+<h2 id="utilities">Utilities</h2>
+<p>Delete all hidden Mac junk files in Windows (Like .DS_STORE)</p>
+<pre><code><span class="hljs-selector-tag">del</span> /s /<span class="hljs-selector-tag">q</span> /f /<span class="hljs-selector-tag">a</span> .DS_STORE
+</code></pre>
+<pre><code><span class="hljs-selector-tag">del</span> /s /<span class="hljs-selector-tag">q</span> /f /<span class="hljs-selector-tag">a</span> ._.*
+</code></pre>
+
+{% endblock %}
