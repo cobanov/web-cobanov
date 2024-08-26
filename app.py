@@ -22,6 +22,25 @@ def get_blog_posts():
     return blog_posts
 
 
+def get_helper_posts():
+    helpers_dir = os.path.join(app.root_path, "templates", "helpers")
+    helpers_files = [f for f in os.listdir(helpers_dir) if f.endswith(".html")]
+
+    # Mapping filenames to titles
+    helpers_posts = {
+        "new_ubuntu": "New Ubuntu Installation",
+        "one_liners": "One Liners",
+    }
+
+    helpers_posts = {
+        key: helpers_posts[key]
+        for key in helpers_posts
+        if f"{key}.html" in helpers_files
+    }
+
+    return helpers_posts
+
+
 @app.route("/")
 def home():
     blog_posts = get_blog_posts()
@@ -49,6 +68,12 @@ def blog():
     return render_template("blog.html", posts=blog_posts)
 
 
+@app.route("/helpers")
+def helpers():
+    helpers_posts = get_helper_posts()
+    return render_template("helpers.html", posts=helpers_posts)
+
+
 @app.route("/blog/<post_name>")
 def blog_post(post_name):
     blog_posts = get_blog_posts()
@@ -56,6 +81,15 @@ def blog_post(post_name):
         return render_template(
             f"blog_posts/{post_name}.html", title=blog_posts[post_name]
         )
+    else:
+        abort(404)
+
+
+@app.route("/helpers/<post_name>")
+def helper_post_post(post_name):
+    all_posts = get_helper_posts()
+    if post_name in all_posts:
+        return render_template(f"helpers/{post_name}.html", title=all_posts[post_name])
     else:
         abort(404)
 
