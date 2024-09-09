@@ -1,0 +1,141 @@
+{% extends "base.html" %} {% block title %}Post 1 Title - [Your Blog Title]{%
+endblock %} {% block content %}
+<article>
+  <h1>Acı Ders</h1>
+  <h3>Rich Sutton, 13 Mart 2019</h3>
+
+  Kaynak:
+  <a
+    href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html?ref=blog.heim.xyz"
+    target="_blank"
+    >The Bitter Lesson by Rich Sutton</a
+  >
+
+  <p>
+    70 yıllık yapay zeka araştırmalarından çıkarılabilecek en büyük ders,
+    hesaplama gücünden faydalanan genel yöntemlerin nihayetinde en etkili
+    yöntemler olduğudur, hem de açık ara. Bunun temel sebebi Moore Yasası, ya da
+    daha genel bir ifadeyle, hesaplama başına maliyetin üstel olarak sürekli
+    düşmesidir. Çoğu yapay zeka araştırması, sanki ajanın elindeki hesaplama
+    gücü sabitmiş gibi yapılmıştır (bu durumda performansı artırmanın tek yolu
+    insan bilgisinden yararlanmak olurdu). Ancak, bir araştırma projesinden
+    biraz daha uzun bir zaman diliminde, çok daha büyük miktarda hesaplama gücü
+    kullanılabilir hale gelir. Kısa vadede bir iyileştirme arayışı içinde olan
+    araştırmacılar, alanlarındaki insan bilgisini kullanmaya çalışırlar; fakat
+    uzun vadede önemli olan tek şey, hesaplama gücünden nasıl yararlanıldığıdır.
+    Bu iki yaklaşım birbirine karşıt olmak zorunda değildir, fakat pratikte
+    genellikle öyle olurlar. Birine harcanan zaman, diğerine harcanmaz.
+    Araştırmacıların psikolojik olarak bir yaklaşıma ya da diğerine bağlılıkları
+    vardır. İnsan bilgisine dayalı yaklaşımlar, yöntemleri karmaşık hale getirir
+    ve hesaplama gücünden faydalanan genel yöntemleri kullanmayı zorlaştırır.
+    Yapay zeka araştırmacılarının bu acı dersi geç öğrendiği birçok örnek vardır
+    ve bunların en önde gelenlerini incelemek öğretici olacaktır.
+  </p>
+  <p>
+    1997 yılında dünya satranç şampiyonu Kasparov'u yenen yöntemler, devasa ve
+    derin bir arama sürecine dayanıyordu. O dönemde, satrancın özel yapısından
+    yararlanarak insan anlayışını kullanan yöntemleri takip eden çoğu bilgisayar
+    satrancı araştırmacısı bu gelişmeye hayal kırıklığıyla yaklaştı. Özel
+    donanım ve yazılım ile birlikte daha basit bir arama temelli yaklaşım çok
+    daha etkili olunca, bu insan bilgisine dayalı satranç araştırmacıları sonucu
+    kabullenmekte zorlandılar. "Kaba kuvvet" aramasının bu kez kazandığını,
+    ancak bunun genel bir strateji olmadığını ve insanların satranç oynama
+    biçimine uymadığını söylediler. Bu araştırmacılar, insan girdilerine dayanan
+    yöntemlerin kazanmasını istediler ve bu gerçekleşmeyince hayal kırıklığına
+    uğradılar.
+  </p>
+  <p>
+    Benzer bir araştırma ilerlemesi bilgisayar Go'da da görüldü, ancak bu süreç
+    20 yıl kadar gecikti. Başlangıçta, insan bilgisinden ya da oyunun özel
+    özelliklerinden yararlanarak aramadan kaçınmaya yönelik büyük çabalar
+    harcandı, ancak tüm bu çabalar, arama ölçeklendirme ile etkili bir şekilde
+    uygulandığında önemsiz hale geldi ya da daha kötüsü oldu. Ayrıca, bir değer
+    fonksiyonu öğrenmek için kendi kendine oyun oynayarak öğrenmenin
+    kullanılması da önemliydi (bu diğer birçok oyunda ve hatta satrançta da
+    böyleydi, ancak 1997'de dünya şampiyonunu yenen programda öğrenme büyük bir
+    rol oynamamıştı). Kendi kendine oyun oynayarak öğrenme ve genel olarak
+    öğrenme, devasa hesaplama gücünü kullanmayı mümkün kılmaları açısından
+    aramaya benzer. Arama ve öğrenme, yapay zeka araştırmalarında büyük miktarda
+    hesaplamadan faydalanmanın en önemli iki tekniğidir. Bilgisayar Go'da,
+    bilgisayar satrancında olduğu gibi, araştırmacıların ilk çabaları insan
+    bilgisini kullanmaya yönelikti (böylece daha az arama gerekli olacaktı) ve
+    ancak çok daha sonra arama ve öğrenmeyi benimseyerek çok daha büyük
+    başarılar elde edildi.
+  </p>
+  <p>
+    Konuşma tanımada, 1970'lerde DARPA tarafından desteklenen bir yarışma
+    düzenlenmişti. Yarışmacılar arasında, kelimeler, fonemler, insan ses yolu
+    vb. gibi insan bilgisinden yararlanan bir dizi özel yöntem vardı. Diğer
+    tarafta ise daha istatistiksel olan ve gizli Markov modellerine (HMM'lere)
+    dayanan daha fazla hesaplama yapan yeni yöntemler vardı. Yine, istatistiksel
+    yöntemler, insan bilgisine dayalı yöntemlerin önüne geçti. Bu, tüm doğal dil
+    işleme alanında kademeli olarak bir değişime yol açtı; istatistik ve
+    hesaplama, alanın hâkim gücü haline geldi. Konuşma tanımadaki derin
+    öğrenmenin yükselişi, bu tutarlı yönelimin son adımıdır. Derin öğrenme
+    yöntemleri insan bilgisine daha az dayanır, daha fazla hesaplama gücü
+    kullanır ve büyük eğitim setlerinden öğrenerek çok daha iyi konuşma tanıma
+    sistemleri üretir. Oyunlarda olduğu gibi, araştırmacılar her zaman
+    sistemleri kendi zihinlerinin nasıl çalıştığını düşündükleri şekilde inşa
+    etmeye çalıştılar—bu bilgiyi sistemlerine yerleştirdiler—fakat bu, sonuçta
+    verimsiz oldu ve araştırmacıların zamanını boşa harcadı. Moore Yasası
+    sayesinde devasa hesaplama gücü erişilebilir hale geldiğinde ve bu gücün
+    nasıl kullanılacağı keşfedildiğinde, insan bilgisine dayalı çabalar boşa
+    gitmiş oldu.
+  </p>
+  <p>
+    Bilgisayarlı görmede de benzer bir gelişme modeli görüldü. İlk yöntemler,
+    görmeyi kenarları aramak, genel silindirler ya da SIFT özellikleri gibi
+    kavramlarla tanımlamaya çalıştı. Ancak bugün bunların hepsi terk edilmiştir.
+    Modern derin öğrenme sinir ağları, sadece evrişim (convolution) ve belirli
+    türdeki değişmezlikleri kullanır ve çok daha iyi sonuçlar elde eder.
+  </p>
+  <p>
+    Bu büyük bir derstir. Bir alan olarak, bu dersi hâlâ tam olarak öğrenemedik
+    çünkü aynı tür hataları yapmaya devam ediyoruz. Bu hataların cazibesini
+    görmek ve onlara etkili bir şekilde direnmek için anlamamız gerekiyor. İnsan
+    zihninin nasıl çalıştığını düşündüğümüz şekilde sistemler inşa etmenin uzun
+    vadede işe yaramadığını öğreten bu acı dersi öğrenmemiz gerekiyor. Acı ders,
+    şu tarihsel gözlemlere dayanıyor:
+    <li>
+      1) Yapay zeka araştırmacıları genellikle ajanlarına bilgi yüklemeye
+      çalıştı,
+    </li>
+
+    <li>
+      2) bu her zaman kısa vadede faydalı oldu ve araştırmacılar için kişisel
+      olarak tatmin ediciydi, ancak
+    </li>
+    <li>
+      3) uzun vadede bu yöntemler bir noktada tıkandı ve daha fazla ilerlemeyi
+      engelledi,
+    </li>
+
+    <li>
+      4) büyük ilerlemeler nihayetinde, hesaplamayı arama ve öğrenme yoluyla
+      ölçeklendiren zıt bir yaklaşımla geldi. Sonuç olarak gelen başarı,
+      genellikle sevilen, insan merkezli bir yaklaşımı alt ettiği için acı bir
+      tat bırakır ve tam anlamıyla sindirilmez.
+    </li>
+  </p>
+  <p>
+    Acı dersten öğrenilmesi gereken bir şey, genel amaçlı yöntemlerin büyük
+    gücüdür; yani mevcut hesaplama kapasitesi çok büyük hale geldikçe bile
+    ölçeklenmeye devam eden yöntemler. Bu şekilde sonsuz ölçekte işe yarayan iki
+    yöntem arama ve öğrenmedir.
+  </p>
+  <p>
+    Acı dersten öğrenilmesi gereken ikinci önemli nokta, zihinlerin
+    içeriklerinin inanılmaz derecede karmaşık olduğudur; zihinlerin içerikleri
+    hakkında uzay, nesneler, çoklu ajanlar ya da simetriler gibi basit düşünme
+    yolları aramayı bırakmalıyız. Bunlar dış dünyanın keyfi ve doğası gereği
+    karmaşık parçalarıdır. Bunları sistemlere yerleştirmemeliyiz çünkü
+    karmaşıklıkları sonsuzdur. Bunun yerine, bu keyfi karmaşıklığı bulup
+    yakalayabilecek yöntemleri geliştirmeliyiz. Bu yöntemlerin özü, iyi
+    yaklaşımlar bulabilmeleridir, ancak bu yaklaşımların keşfi bizim
+    tarafımızdan değil, yöntemlerimiz tarafından yapılmalıdır. Bizim gibi keşif
+    yapabilen, fakat bizim keşfettiklerimizi içermeyen yapay zeka ajanları
+    istiyoruz. Kendi keşiflerimizi sisteme yerleştirmek, keşif sürecinin nasıl
+    gerçekleştiğini görmeyi zorlaştırır.
+  </p>
+</article>
+{% endblock %}
