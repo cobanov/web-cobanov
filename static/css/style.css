@@ -64,3 +64,10 @@ img {
   margin-right: auto;
   border-radius: 10px;
 }
+
+/* Article Layout */
+article {
+  max-width: 700px; /* This keeps your content narrow and centered */
+  margin: 1px auto; /* Centers the content */
+  padding: 20px;
+}
