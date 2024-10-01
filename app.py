@@ -11,9 +11,8 @@ def get_blog_posts():
     # Mapping filenames to titles
     blog_posts = {
         "generative_art": "Generative Art: A Gentle Introduction",
-        "vision_transformers": "Vision Transformers: A New Era in Computer Vision",
-        "what_is_generative_art": "What is Generative Art?",
         "bitter_sweet": "Bitter Sweet",
+		"piracy": "piracy",
     }
 
     blog_posts = {
